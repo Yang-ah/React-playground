@@ -5,6 +5,7 @@
       #root {
         display: flex;
         justify-content: center;
+        box-sizing: border-box;
       }
       #container {
         display: flex;
@@ -18,6 +19,16 @@
         padding: 10px;
         font-size: 20px;
       }
+
+      #btn_container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      button {
+        width: 48%;
+      }
     </style>
   </head>
   <body id="root"></body>
@@ -29,11 +40,17 @@
 
     function App() {
       const [amount, convert] = React.useState(0);
+      const [inverted, setInverted] = React.useState(true);
+
       const onChange = (event) => {
         convert(event.target.value);
       };
       const reset = () => {
         convert(0);
+      };
+      const flip = () => {
+        reset();
+        setInverted((current) => !current);
       };
 
       return (
@@ -41,20 +58,26 @@
           <h2>Super Converter</h2>
           <label htmlFor="minutes">Minutes</label>
           <input
-            value={amount}
+            value={inverted ? amount : Math.round(amount * 60)}
             onChange={onChange}
             id="minutes"
             type="number"
             placeholder="Minutes"
+            disabled={!inverted}
           />
           <label htmlFor="hours">Hours</label>
           <input
-            value={Math.round(amount / 60)}
+            value={inverted ? Math.round(amount / 60) : amount}
+            onChange={onChange}
             id="hours"
             type="number"
             placeholder="Hours"
+            disabled={inverted}
           />
-          <button onClick={reset}>Reset</button>
+          <div id="btn_container">
+            <button onClick={reset}>Reset</button>
+            <button onClick={flip}>Flip</button>
+          </div>
         </div>
       );
     }
