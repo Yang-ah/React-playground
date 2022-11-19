@@ -8,17 +8,29 @@
   <script type="text/babel">
     const root = document.querySelector("#root");
 
-    function Btn({ banana }) {
-      console.log({ banana });
-      return <button>{banana}</button>;
+    function Btn({ banana, big }) {
+      return (
+        <button
+          style={{
+            backgroundColor: "tomato",
+            color: "white",
+            padding: "10px 20px",
+            border: 0,
+            borderRadius: 10,
+            fontSize: big ? 18 : 10,
+          }}
+        >
+          {banana}
+        </button>
+      );
     }
 
     function App() {
       return (
         <div>
-          <Btn banana="hi" />
-          <Btn banana="hello" />
-          <Btn banana="goodbye" />
+          <Btn banana="hi" big={true} />
+          <Btn banana="hello" big={false} />
+          <Btn banana="goodbye" big={true} />
         </div>
       );
     }
