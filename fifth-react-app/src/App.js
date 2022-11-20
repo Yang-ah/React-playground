@@ -1,17 +1,20 @@
 import { useState } from "react";
 
 function App() {
-  const [todo, addTodo] = useState("");
+  const [todo, setTodo] = useState("");
+  const [todoList, setList] = useState([]);
 
-  const onChange = (e) => addTodo(e.target.value);
+  const onChange = (e) => setTodo(e.target.value);
   const onSubmit = (e) => {
     e.preventDefault();
     if (todo === "") {
       return;
     }
-    addTodo("");
+    setList((currentArray) => [...currentArray, todo]);
+    setTodo("");
   };
 
+  console.log(todoList);
   return (
     <div>
       <h2>To do list</h2>
