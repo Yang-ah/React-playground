@@ -15,10 +15,18 @@ function App() {
   useEffect(runOnlyOnce, []);
 
   useEffect(() => {
-    if (keyword !== keyword.length > 5) {
+    if (keyword !== "" && keyword.length > 5) {
       console.log("Search for", keyword);
     }
   }, [keyword]);
+
+  useEffect(() => {
+    console.log("I run when 'counter' changes.");
+  }, [counter]);
+
+  useEffect(() => {
+    console.log("I run when keyword & counter change");
+  }, [keyword, counter]);
 
   return (
     <div>
@@ -26,7 +34,7 @@ function App() {
         value={keyword}
         onChange={onChange}
         type="text"
-        placeholder="Search hear..."
+        placeholder="Search here..."
       />
       <h1>Clicked {counter} times</h1>
       <button onClick={onClick}>Click me!</button>
