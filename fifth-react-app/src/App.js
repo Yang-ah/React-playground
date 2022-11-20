@@ -14,7 +14,6 @@ function App() {
     setTodo("");
   };
 
-  console.log(todoList);
   return (
     <div>
       <h2>To do list</h2>
@@ -27,6 +26,12 @@ function App() {
         />
         <button>Add</button>
       </form>
+      <hr />
+      <ul>
+        {todoList.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>
     </div>
   );
 }
