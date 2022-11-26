@@ -11,18 +11,28 @@ function App() {
     ).json();
     setMovies(json.data.movies);
     setLoading(false);
+    console.log(json.data.movies);
   };
   useEffect(() => {
     getMovies();
   }, []);
   return (
     <div>
+      <h1>Movies</h1>
       {loading ? <h2>Loading...</h2> : null}
-      <ul>
-        {movies.map((movie) => (
-          <li key={movie.id}>{movie.title}</li>
-        ))}
-      </ul>
+      {movies.map((movie) => (
+        <div key={movie.id}>
+          <h3> {movie.title_long}</h3>
+          <p>genres : </p>
+          <ul>
+            {movie.genres
+              ? movie.genres.map((genre) => <li key={genre}>{genre}</li>)
+              : null}
+          </ul>
+          <img src={movie.medium_cover_image} />
+          <p>{movie.summary}</p>
+        </div>
+      ))}
     </div>
   );
 }
