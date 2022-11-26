@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <h1>The Coins!</h1>
+      <h1>The Coins!({coins.length})</h1>
       {loading ? <h3>Loading....</h3> : null}
       <label htmlFor="haveDollar">I have $</label>
       <input id="haveDollar" value={inputValue} onChange={inputCng} />
