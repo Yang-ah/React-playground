@@ -5,9 +5,9 @@ function Movie({ coverImg, title, summary, genres, id }) {
   return (
     <Link to={`/movie/${id}`}>
       <div className={styles.wrap}>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <div className={styles.genres}>
-          <p>Genres :&nbsp;</p>
+          <h4>Genres :&nbsp;</h4>
           <ul>
             {genres?.map((genre) => (
               <li key={genre}>{genre}</li>

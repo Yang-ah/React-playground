@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
+import styles from "./Details.module.css";
+
 function Details() {
   const [movie, setMoive] = useState("");
   const [loading, setloading] = useState(true);
@@ -17,7 +19,7 @@ function Details() {
   }, [getMovie]);
 
   return (
-    <div>
+    <div className={styles.detail}>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
@@ -26,7 +28,7 @@ function Details() {
           <p>genres : </p>
           <ul>
             {movie?.genres?.map((g) => (
-              <li key={id}>{g}</li>
+              <li key={g}>{g}</li>
             ))}
           </ul>
           <img src={movie.medium_cover_image} alt={id} />
