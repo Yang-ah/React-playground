@@ -22,7 +22,6 @@ function Details() {
         <h1>Loading...</h1>
       ) : (
         <div>
-          {" "}
           <h1>{movie.title_long}</h1>
           <p>genres : </p>
           <ul>

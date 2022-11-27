@@ -22,7 +22,6 @@ function Home() {
         <h1>Loading.....</h1>
       ) : (
         <div>
-          <h1>Moives</h1>
           {movies.map((movie) => (
             <Movie
               id={movie.id}
