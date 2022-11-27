@@ -1,17 +1,42 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 function Details() {
+  const [movie, setMoive] = useState("");
+  const [loading, setloading] = useState(true);
   const { id } = useParams();
-  const getMovie = async () => {
+  const getMovie = useCallback(async () => {
     const json = await (
       await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
     ).json();
-    console.log(json);
-  };
+    setMoive(json.data.movie);
+    setloading(false);
+  }, [id]);
+
   useEffect(() => {
     getMovie();
-  }, []);
-  return <h1>Details</h1>;
+  }, [getMovie]);
+
+  return (
+    <div>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          {" "}
+          <h1>{movie.title_long}</h1>
+          <p>genres : </p>
+          <ul>
+            {movie?.genres?.map((g) => (
+              <li key={id}>{g}</li>
+            ))}
+          </ul>
+          <img src={movie.medium_cover_image} alt={id} />
+          <p>{movie.rating}</p>
+          <p>{movie.runtime}</p>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Details;
