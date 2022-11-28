@@ -1,33 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;800&display=swap");
 
-.genres {
-  width: 100%;
-  flex-wrap: wrap;
-  display: flex;
-  align-items: center;
-  margin: 10px 0;
-  overflow: hidden;
-  font-size: 12px;
-}
-.genres li {
-  border-radius: 8px;
-  padding: 5px;
-
-  background-color: black;
-  color: white;
-}
-
 .wrap {
-  width: 230px;
+  width: 300px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 20px;
+  border: 1px solid grey;
+  border-radius: 15px;
+}
+.top {
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
+  font-size: 12px;
 }
 
 .summary {
-  height: 150px;
+  height: 45px;
   overflow: hidden;
   font-size: 14px;
-  padding: 10px 5px;
+  padding: 10px 5px 0 5px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
